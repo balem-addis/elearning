@@ -171,7 +171,7 @@ timeimgs(numb = ++numb);
 <a href="uploadcoursematerial.php"class="a">Upload course Material</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="uploadassignment.php"class="a">Upload Assignment </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href=" downloadassignment.php"class="a">Download Assignment</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="postcourseresult.php"class="a">Post course Result</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="postcourseresult.php"class="a">Insert course Result</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 </td>
 <td><?php echo'Hi';echo '&nbsp'; echo $firstname;?></td>
