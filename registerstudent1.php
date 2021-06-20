@@ -1,0 +1,30 @@
+
+
+<?php
+
+	
+if(isset($_POST['register']))
+{
+
+$firstname=$_POST['fname'];
+$lastname=$_POST['lname'];
+$studentid=$_POST['id'];
+$age=$_POST['age'];
+$sex=$_POST['sex'];
+$department=$_POST['dept'];
+$year=$_POST['year'];
+$semister=$_POST['semister'];
+
+
+$reg=mysql_query("insert into student(firstname,lastname,id_number,age,sex,department,year,semister)  values('$firstname','$lastname','$studentid','$age','$sex','$department','$year','$semister'");
+if(!mysql_query($reg,$conn)){
+	
+die("query is failed".mysql_error());
+}
+			else
+				{
+echo "Registered Successfully!";
+}
+mysql_close($conn);
+}
+?>

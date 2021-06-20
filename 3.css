@@ -1,0 +1,101 @@
+
+#dropdown{
+	display:block;
+	float:center;
+	width:1000;
+	
+	margin:0;
+	padding:0;
+	list-style:radius;
+	font-size:13px;
+	//font-weight:normal;
+	font-family:Verdana, Arial, Helvetica, sans-serif,times-new-roman;
+	color:	#606060;
+	
+	
+	}
+
+#dropdown ul, #dropdown li{
+	float:left;
+	list-style:none;
+	margin:0;
+	padding:0;
+	text-decoration:none;
+
+	}
+a:link{color:blue;}
+a:active{color:blue;}
+a:hover{color:blue;}
+a:visited{color:black;}
+#dropdown li a:link, #dropdown li a:visited, #dropdown li a:hover{
+	display:block;
+	margin:0;
+	padding:15px 20px;
+	color:#000000;
+	background-color:#778899;
+	border-radius:40px;
+	text-decoration:bold;
+	font-family:Arial Black;
+	text-decoration:none;
+	//dropdown
+	}
+
+#dropdown ul ul li a:link, #dropdown ul ul li a:visited{
+	border-radius:40px;
+	text-decoration:none;
+	}
+
+#dropdown li.last a{
+	margin-right:0;
+	}
+
+#dropdown li a:hover, #dropdown ul li.active a{
+	color:#ffffff;
+	background-color:#059bd8;//color of circle
+	text-decoration:none;
+	border-radius:40px;
+	}
+	
+#dropdown li li a:link , #dropdown li li a:visited{
+	width:150px;
+	float:none;
+	margin:0;
+	padding:7px 10px;
+	font-size:12px;
+	font-weight:normal;
+	color:#FFFFFF;
+	background-color:#000000;
+	text-decoration:none;
+	
+	}
+	
+#dropdown li li a:hover{
+	color:#FFFFFF;
+	background-color:#059BD8;
+	border-radius:40px;
+	text-decoration:none;
+	}
+
+#dropdown li ul{
+	background:#000000;
+	z-index:9999;
+	position:absolute;
+	left:-999em;
+	height:auto;
+	width:170px;
+	border-left:1px solid #FFFFFF;
+	border-bottom:1px solid #FFFFFF;
+	text-decoration:none;
+	}
+
+#dropdown li ul a{width:140px;}
+
+#dropdown li ul ul{margin:-32px 0 0 0;}
+
+#dropdown li:hover ul ul{left:-999em;}
+
+#dropdown li:hover ul, #dropdown li li:hover ul{left:auto;}
+
+#dropdown li:hover{position:static;}
+
+#dropdown li.last a{margin-right:0;}
