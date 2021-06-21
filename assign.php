@@ -20,8 +20,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -209,7 +209,7 @@ $result = mysql_query ("SELECT *FROM instructor  where status='on' ORDER BY firs
  Instructor Name&nbsp&nbsp</label>';
  echo '<select id="instructorname" name="instructorname">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 
 $vaa = $row['firstname'].' '.$row['midlename'].' '.$row['lastname']; 
@@ -227,7 +227,7 @@ $result_set = mysql_query ("SELECT *FROM course");
  </label>';
  echo '<select id="coursename" name="coursename">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 $coursename = $row['coursename']; 
@@ -250,7 +250,7 @@ if(isset($_POST['assign']))
 $instructorname=$_POST['instructorname'];
 $ccode=$_POST['coursename'];
 
-$reg=mysql_query("insert into courseinstructor  values('','$instructorname','$ccode')");
+$reg=mysqli_query($conn,"insert into courseinstructor  values('','$instructorname','$ccode')");
 if($reg)
 	{
 	

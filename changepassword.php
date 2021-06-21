@@ -24,8 +24,8 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysql_query("select * from instructor where instructorid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -211,11 +211,11 @@ $confirmpass1 = $_POST['confirm_password'];
 $newpass=md5($newpass1);
 $confirmpass=md5($confirmpass1);
 
-$result=mysql_query("select * from account where password='{$oldpass}' AND username='$username' ");
+$result=mysqli_query($conn,"select * from account where password='{$oldpass}' AND username='$username' ");
 if(!$result){
-die("query faile".mysql_error());
+die("query faile".mysqli_error());
 }
-if(mysql_num_rows($result)==1){
+if(mysqli_num_rows($result)==1){
     if($newpass!=$confirmpass){
 	       echo'  <p class="wrong">New Password and Confirm Password does not Match!</p>';                                
 		   echo' <meta content="5;changepassword.php" http-equiv="refresh" />';
@@ -223,7 +223,7 @@ if(mysql_num_rows($result)==1){
 		   else
 		   {
   $query="update account set password='{$newpass}' where password='{$oldpass}'";
-        $result=mysql_query($query);
+        $result=mysqli_query($conn,$query);
 		 echo'  <p class="success"> Your password has been changed successfuly!</p>';
          echo' <meta content="1;login.php" http-equiv="refresh" />';  
    }

@@ -21,8 +21,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -255,7 +255,7 @@ $result_set = mysql_query ("SELECT *FROM department");
  &nbsp&nbsp&nbspDepartment&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 $department = $row['departmentname']; 
@@ -299,7 +299,7 @@ $sem=$_POST['Sem'];
 
 
 
-$reg=mysql_query("insert into course values('$ccode','$cname','$chour','$pre','$dept','$year','$sem')");
+$reg=mysqli_query($conn,"insert into course values('$ccode','$cname','$chour','$pre','$dept','$year','$sem')");
 if($reg){
 	
 echo "registered successfully!!";

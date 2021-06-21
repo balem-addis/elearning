@@ -24,8 +24,8 @@ if(isset($_SESSION['studentid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['studentid'];
 
-			$result=mysql_query("select * from student where studentid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from student where studentid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $studentid=$row['studentid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -167,13 +167,13 @@ $result_set = mysql_query ("SELECT *FROM coursestudent where studentid='$student
  </label>';
  echo '<select id="coursename" name="coursename">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 
 $code = $row['coursecode'];
-$sq=mysql_query("select * from course where coursecode='$code'");
-$col=mysql_fetch_array($sq);
+$sq=mysqli_query($conn,"select * from course where coursecode='$code'");
+$col=mysqli_fetch_array($sq);
 $coursename = $col['coursename']; 
 echo "<option value='$code'>$coursename</option>";
 }
@@ -190,10 +190,10 @@ mysql_select_db("e-learning");
  if(isset($_POST['download']))
  {
    $coursecode =$_POST['coursename'];
-    $result_set = mysql_query("SELECT * FROM coursematerial WHERE 	coursecode= '{$coursecode}'  ");
+    $result_set = mysqli_query($conn,"SELECT * FROM coursematerial WHERE 	coursecode= '{$coursecode}'  ");
 
 
-   $rowCheck = mysql_num_rows($result_set);
+   $rowCheck = mysqli_num_rows($result_set);
 if($rowCheck<1)
 {
 echo'<p class="wrong">The file is not found</p>';
@@ -201,9 +201,9 @@ echo' <meta content="5;downloadcoursematerial.php" http-equiv="refresh" />';
 }
 if(!$result_set)
 	{
-die("query is failed".mysql_error());
+die("query is failed".mysqli_error());
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
@@ -214,14 +214,14 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color='white' size='2'>File Name</th>
 <th bgcolor='#336699'><font color=white size='2'>uploaded Date</th>
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 	$insid=$row['instructorid'];
-		$mujib= mysql_query("SELECT * FROM instructor WHERE 	instructorid= '{$insid}'  ");
-		$muj=mysql_fetch_array($mujib);
+		$mujib= mysqli_query($conn,"SELECT * FROM instructor WHERE 	instructorid= '{$insid}'  ");
+		$muj=mysqli_fetch_array($mujib);
 			
-		$mujib1= mysql_query("SELECT * FROM course WHERE 	coursecode= '{$coursecode}'  ");
-		$muj1=mysql_fetch_array($mujib1);
+		$mujib1= mysqli_query($conn,"SELECT * FROM course WHERE 	coursecode= '{$coursecode}'  ");
+		$muj1=mysqli_fetch_array($mujib1);
 echo"<tr>";
 $files=$row['filename'];
 echo"<td>";echo $muj['firstname'].' '.$muj['midlename']; echo"</td>";

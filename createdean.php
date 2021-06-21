@@ -21,8 +21,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -294,7 +294,7 @@ if($confirmpass!=$password)
 }
 else
 {
-$reg=mysql_query("insert into account  values('','$fname','$mname','$lname','$uname','$password','$confirmpass','$actype')");
+$reg=mysqli_query($conn,"insert into account  values('','$fname','$mname','$lname','$uname','$password','$confirmpass','$actype')");
 if($reg){
 	
 echo "successfully registered !!";

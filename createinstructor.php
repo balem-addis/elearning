@@ -20,8 +20,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -276,7 +276,7 @@ $result_set = mysql_query ("SELECT *FROM department");
  echo '<label>Department&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 $department = $row['departmentname']; 
@@ -312,8 +312,8 @@ $password=md5($pass);
 
 $stat='on';
 
-$reg=mysql_query("insert into instructor  values('$instructorid','$fname','$mname','$lname','$sex','$departmentid','$stat')");
-$re=mysql_query("insert into account  values('','$instructorid','','$fname','$password','$utype')");
+$reg=mysqli_query($conn,"insert into instructor  values('$instructorid','$fname','$mname','$lname','$sex','$departmentid','$stat')");
+$re=mysqli_query($conn,"insert into account  values('','$instructorid','','$fname','$password','$utype')");
 if($reg){
 	
 echo "successfully created !!";

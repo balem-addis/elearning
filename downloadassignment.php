@@ -24,8 +24,8 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysql_query("select * from instructor where instructorid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -196,12 +196,12 @@ $result = mysql_query ("SELECT * FROM courseinstructor where 	instructorid='{$in
  echo '<label>Select course Name:</label>';
  echo '<select id="ccode" name="coursename">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 
 $ccode=$row['coursecode'];
-$sql=mysql_query("select * from course where coursecode='{$ccode}'");
-$col=mysql_fetch_array($sql);
+$sql=mysqli_query($conn,"select * from course where coursecode='{$ccode}'");
+$col=mysqli_fetch_array($sql);
 $cname = $col['coursename']; 
 echo "<option value='$ccode'>$cname</option>";
 }
@@ -225,7 +225,7 @@ if(isset($_POST['view']))
 {
    $coursecode =$_POST['coursename'];
   
-      $result_set = mysql_query("SELECT * FROM assignment WHERE coursecode= '{$coursecode}' AND instructorid='{$instructorid}'  ");
+      $result_set = mysqli_query($conn,"SELECT * FROM assignment WHERE coursecode= '{$coursecode}' AND instructorid='{$instructorid}'  ");
   
 
 
@@ -233,7 +233,7 @@ if(!$result_set)
 	    {
 echo"something wrong pls check again!!";
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
 <tr>
@@ -244,7 +244,7 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color=white size='2'>File Name</th>
 
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 echo"<tr >";
 $files=$row['filename'];
@@ -269,13 +269,13 @@ else{
 if(isset($_POST['download']))
  {
 	 $assnum=$_POST['assnum'];
-	  $result_set = mysql_query("SELECT * FROM assignment WHERE 	number= '{$assnum}'  ");
+	  $result_set = mysqli_query($conn,"SELECT * FROM assignment WHERE 	number= '{$assnum}'  ");
  
 if(!$result_set)
 	{
 echo"something wrong plas check again!!";
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
 <tr>
@@ -286,7 +286,7 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color=white size='2'>File Name</th>
 <th bgcolor='#336699'><font color=white size='2'>submitted Date</th>
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 echo"<tr>";
 $files=$row['filename'];

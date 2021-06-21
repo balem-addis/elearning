@@ -16,10 +16,10 @@ $year=$_POST['year'];
 $semister=$_POST['semister'];
 
 
-$reg=mysql_query("insert into student(firstname,lastname,id_number,age,sex,department,year,semister)  values('$firstname','$lastname','$studentid','$age','$sex','$department','$year','$semister'");
-if(!mysql_query($reg,$conn)){
+$reg=mysqli_query($conn,"insert into student(firstname,lastname,id_number,age,sex,department,year,semister)  values('$firstname','$lastname','$studentid','$age','$sex','$department','$year','$semister'");
+if(!mysqli_query($conn,$reg,$conn)){
 	
-die("query is failed".mysql_error());
+die("query is failed".mysqli_error());
 }
 			else
 				{

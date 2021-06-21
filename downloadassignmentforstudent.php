@@ -24,8 +24,8 @@ if(isset($_SESSION['studentid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['studentid'];
 
-			$result=mysql_query("select * from student where studentid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from student where studentid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $studentid=$row['studentid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -168,13 +168,13 @@ $result_set = mysql_query ("SELECT *FROM coursestudent where studentid='$student
  </label>';
  echo '<select id="coursename" name="coursecode">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 
 $code = $row['coursecode'];
-$sq=mysql_query("select * from course where coursecode='$code'");
-$col=mysql_fetch_array($sq);
+$sq=mysqli_query($conn,"select * from course where coursecode='$code'");
+$col=mysqli_fetch_array($sq);
 $coursename = $col['coursename']; 
 echo "<option value='$code'>$coursename</option>";
 }
@@ -189,12 +189,12 @@ echo'<br>';?>
  if(isset($_POST['search']))
  {
    echo $coursecode =$_POST['coursecode'];
-    $result_set = mysql_query("SELECT * FROM assignment WHERE 	coursecode= '{$coursecode}' ");
+    $result_set = mysqli_query($conn,"SELECT * FROM assignment WHERE 	coursecode= '{$coursecode}' ");
 if(!$result_set)
 	{
 echo"File Not found in such Course Code";
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
 <tr>
@@ -205,7 +205,7 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color=white size='2'>Uploaded date</th>
 <th bgcolor='#336699'><font color=white size='2'>Deadline date</th>
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 echo"<tr>";
 $files=$row['filename'];

@@ -6,15 +6,15 @@ include('header.php');
 <?php
 if(isset($_POST['view']))
 {
-	//include('connection.php');
+	include('connection.php');
 $dept=$_POST['departmentname'];
 $year=$_POST['year'];
-    $result_set = mysql_query("SELECT * FROM student where departmentid='{$dept}' and year='{$year}'");
+    $result_set = mysqli_query($conn,"SELECT * FROM student where departmentid='{$dept}' and year='{$year}'");
 if(!$result_set)
 	{
-die("query is failed".mysql_error());
+die("query is failed".mysqli_error());
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center' valign='top'><font color=white>
 <tr>
@@ -28,11 +28,11 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color='white' size='2'>Semister</th>
 
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 	$deptid=$row["departmentid"];
-	$d=mysql_query("select * from department where departmentid='{$deptid}'");
-	$col=mysql_fetch_array($d);
+	$d=mysqli_query($conn,"select * from department where departmentid='{$deptid}'");
+	$col=mysqli_fetch_array($d);
 echo"<tr>";
 echo"<td>";echo $row["studentid"]; echo"</td>";
 echo"<td>";echo $row["firstname"]; echo"</td>";

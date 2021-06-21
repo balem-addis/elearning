@@ -22,8 +22,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -114,7 +114,7 @@ $result_set = mysql_query ("SELECT *FROM department");
  echo '<label>Department&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 $department = $row['departmentname']; 
@@ -135,7 +135,7 @@ $result_set = mysql_query ("SELECT *FROM course");
  </label>';
  echo '<select id="coursename" name="coursename">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 $coursename = $row['coursename']; 
@@ -171,15 +171,15 @@ if(isset($_POST['assign']))
 	 $coursecode=$_POST['coursename'];
 	 $year=$_POST['year'];
 	 $semister=$_POST['semister'];
-	$sql=mysql_query("select * from student where departmentid='$departmentid' AND year='$year' AND semister ='$semister'");
-	if(mysql_num_rows($sql)>0)
+	$sql=mysqli_query($conn,"select * from student where departmentid='$departmentid' AND year='$year' AND semister ='$semister'");
+	if(mysqli_num_rows($sql)>0)
 	{
 		
 	
-		while($row=mysql_fetch_array($sql))
+		while($row=mysqli_fetch_array($sql))
 		{
 		$sid=$row['studentid'];
-		$q=mysql_query("insert into coursestudent values('','{$sid}','{$coursecode}','{$year}','{$semister}')");
+		$q=mysqli_query($conn,"insert into coursestudent values('','{$sid}','{$coursecode}','{$year}','{$semister}')");
 		if($q)
 			echo"successfully assigned!";
 		

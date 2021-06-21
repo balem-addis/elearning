@@ -106,9 +106,9 @@ Password&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="pass" name="password"
  {
    $username =$_POST['username'];
    $password=$_POST['password'];
-    $result_set = mysql_query("SELECT * FROM student WHERE 	firstname= '{$username}' AND studentid= '{$password}' ");
-	$num1 = mysql_num_rows($result_set);
-	$row = mysql_fetch_array($result_set);
+    $result_set = mysqli_query($conn,"SELECT * FROM student WHERE 	firstname= '{$username}' AND studentid= '{$password}' ");
+	$num1 = mysqli_num_rows($result_set);
+	$row = mysqli_fetch_array($result_set);
 	
 	if($num1 == 1)
 {
