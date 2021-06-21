@@ -20,8 +20,8 @@ if(isset($_SESSION['accountid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
 
-			$result=mysql_query("select * from account where accountid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result = mysqli_query($conn,"select * from account where accountid='$user_id'")or die(mysql_error);
+			$row = mysqli_fetch_array($result);
             $accountid=$row['accountid'];
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
@@ -107,12 +107,12 @@ timeimgs(numb = ++numb);
 <center><font family="anduls"size="+3" color="blue"> Here is List of departments in your college!</font></center> 
 <?php
 
-    $result_set = mysql_query("SELECT * FROM department");
+    $result_set = mysqli_query($conn,"SELECT * FROM department");
 if(!$result_set)
 	{
-die("query is failed".mysql_error());
+die("query is failed".mysqli_error());
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center' valign='top'><font color=white>
 <tr>
@@ -120,7 +120,7 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color='white' size='2'>Department Name</th>
 
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 echo"<tr>";
 echo"<td>";echo $row["departmentid"]; echo"</td>";

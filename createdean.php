@@ -307,7 +307,7 @@ echo "successfully registered !!";
 		  echo'<meta content="2;createdean.php" http-equiv="refresh"/>';
 }}}
 			
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 </fieldset>

@@ -268,7 +268,7 @@ echo'<meta content="3;department.php" http-equiv="refresh"/>';
 			{
 			echo"dept duplication occur";
 			}}
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 

@@ -135,7 +135,7 @@ function madeSelection(elem, helperMsg){
 <form action ="viewstudent1.php" method="post" onSubmit="return check()">
 <?php
  //include('connection.php');
-$result = mysql_query ("SELECT *FROM department");
+$result = mysqli_query($conn,"SELECT *FROM department");
  echo '<label>Department Name&nbsp&nbsp&nbsp&nbsp</label>';
  echo '<select id="department" name="departmentname">';
 echo '<option  selected>..select..</option>';

@@ -250,7 +250,7 @@ Pre Requiest &nbsp;&nbsp;
 <input type="text" name="pre" id="preq" size="20%"><br><br>
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM department");
+$result_set = mysqli_query($conn,"SELECT *FROM department");
  echo '<label>
  &nbsp&nbsp&nbspDepartment&nbsp</label>';
  echo '<select id="dept" name="department">';
@@ -310,7 +310,7 @@ echo'<meta content="3;registercourse.php" http-equiv="refresh"/>';
 			echo"coursecode duplication occur";
 			echo'<meta content="3;registercourse.php" http-equiv="refresh"/>';
 			}}
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 

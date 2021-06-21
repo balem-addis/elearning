@@ -272,7 +272,7 @@ Acc_Type&nbsp;<select name="actype" id="acctype"><option selected>..select..</op
 instructor</option></select><br><br>
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM department");
+$result_set = mysqli_query($conn,"SELECT *FROM department");
  echo '<label>Department&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
@@ -324,7 +324,7 @@ echo "successfully created !!";
 			echo" primary key duplication or something wrong";
 			echo'<meta content="3;createinstructor.php" http-equiv="refresh"/>';
 			}}
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 </fieldset>

@@ -263,7 +263,7 @@ Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
  onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br><br>
  <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM department");
+$result_set = mysqli_query($conn,"SELECT *FROM department");
  echo '<label>Department&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
@@ -339,7 +339,7 @@ echo "registered successfully!!";
 			echo"Student is not registered please try again!!";
 			 echo'<meta content="3;registerstudent.php" http-equiv="refresh"/>';
 			}}
-mysql_close($conn);
+mysqli_close($conn);
 
 ?>
 

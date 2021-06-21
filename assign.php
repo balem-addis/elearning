@@ -204,7 +204,7 @@ function madeSelection(elem, helperMsg){
 <fieldset><legend align="center"> Assign instructor</legend><br>
 <?php
  //include('connection.php');
-$result = mysql_query ("SELECT *FROM instructor  where status='on' ORDER BY firstname");
+$result = mysqli_query($conn,"SELECT *FROM instructor  where status='on' ORDER BY firstname");
  echo '<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
  Instructor Name&nbsp&nbsp</label>';
  echo '<select id="instructorname" name="instructorname">';
@@ -221,7 +221,7 @@ echo'<br>';
 echo'<br>';?>
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM course");
+$result_set = mysqli_query($conn,"SELECT *FROM course");
  echo '<label>Course Name&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
  </label>';
