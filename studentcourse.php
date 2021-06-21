@@ -110,7 +110,7 @@ timeimgs(numb = ++numb);
 <form action="studentcourse.php" method="post">
  <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM department");
+$result_set = mysqli_query($conn,"SELECT *FROM department");
  echo '<label>Department&nbsp</label>';
  echo '<select id="dept" name="department">';
 echo '<option  selected>..select..</option>';
@@ -129,7 +129,7 @@ echo'<br>';?>
 
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM course");
+$result_set = mysqli_query($conn, "SELECT *FROM course");
  echo '<label>Course Name
 
  </label>';
