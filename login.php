@@ -183,18 +183,18 @@ User Name&nbsp;&nbsp;&nbsp;</font></td><td border="0"><input type="text" name="u
    $password1=$_POST['password'];
   $password= ($password1);
   
-    $result_set = mysql_query("SELECT * FROM account WHERE 	username= '{$username}' AND password= '{$password}' ");
-	$num=mysql_num_rows($result_set);
+    $result_set = mysqli_query($conn, "SELECT * FROM account WHERE 	username= '{$username}' AND password= '{$password}' ");
+	$num=mysqli_num_rows($result_set);
 	if($num!=0)
 	{
-  $row=mysql_fetch_array($result_set);
+  $row=mysqli_fetch_array($result_set);
   $role=$row['usertype'];
   $userid=$row['instructorid'];
   $userid2=$row['studentid'];
   if($role=='instructor')
   {
-	  $q=mysql_query("select * from instructor where instructorid='{$userid}'");
-	  $a=mysql_fetch_array($q);
+	  $q=mysqli_query($conn,"select * from instructor where instructorid='{$userid}'");
+	  $a=mysqli_fetch_array($q);
 	$status=$a['status'];
 	if($status=='on')
 	{
@@ -209,8 +209,8 @@ User Name&nbsp;&nbsp;&nbsp;</font></td><td border="0"><input type="text" name="u
   }}
       if($role=='dean')
   {
-	  $q=mysql_query("select * from instructor where instructorid='{$userid}'");
-	  $a=mysql_fetch_array($q);
+	  $q=mysqli_query($conn,"select * from instructor where instructorid='{$userid}'");
+	  $a=mysqli_fetch_array($q);
 	$status=$a['status'];
 	if($status=='on')
 	{
@@ -226,8 +226,8 @@ User Name&nbsp;&nbsp;&nbsp;</font></td><td border="0"><input type="text" name="u
    
   if($role=='registrar')
   {
-	  $q=mysql_query("select * from instructor where instructorid='{$userid}'");
-	  $a=mysql_fetch_array($q);
+	  $q=mysqli_query($conn,"select * from instructor where instructorid='{$userid}'");
+	  $a=mysqli_fetch_array($q);
 	$status=$a['status'];
 	if($status=='on')
 	{
@@ -243,8 +243,8 @@ User Name&nbsp;&nbsp;&nbsp;</font></td><td border="0"><input type="text" name="u
   
     if($role=='student')
   {
-	  $q=mysql_query("select * from student where studentid='{$userid2}'");
-	  $a=mysql_fetch_array($q);
+	  $q=mysqli_query($conn,"select * from student where studentid='{$userid2}'");
+	  $a=mysqli_fetch_array($q);
 	   //session_start();
 		$_SESSION['studentid']=$a['studentid'];
 	echo "<script>window.location='student.php';</script>";
@@ -262,7 +262,7 @@ echo '</center>';
 echo"username and password not match!!"	; 
  echo'<meta content="3;login.php" http-equiv="refresh"/>';}
  }
- mysql_close($conn);
+ mysqli_close($conn);
 
 ?>
 
