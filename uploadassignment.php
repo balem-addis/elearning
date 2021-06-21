@@ -24,7 +24,7 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysqli_query("select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$result=mysqli_query($conn, "select * from instructor where instructorid='$user_id'")or die(mysqli_error);
 			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
@@ -173,16 +173,16 @@ timeimgs(numb = ++numb);
 
 <?php
  //include('connection.php');
-$result = mysql_query ("SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
+$result = mysqli_query($conn, "SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
  echo '<label>Select course Name:</label>';
  echo '<select id="ccode" name="coursename">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 
 $ccode=$row['coursecode'];
-$sql=mysql_query("select * from course where coursecode='{$ccode}'");
-$col=mysql_fetch_array($sql);
+$sql=mysqli_query($conn, "select * from course where coursecode='{$ccode}'");
+$col=mysqli_fetch_array($sql);
 $cname = $col['coursename']; 
 echo "<option value='$ccode'>$cname</option>";
 }
