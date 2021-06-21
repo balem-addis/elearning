@@ -162,7 +162,7 @@ DMCTE ELMS</b> </font><BR>
 <center > SELECT COURSE NAME</center><br><br>
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT *FROM coursestudent where studentid='$studentid'");
+$result_set = mysqli_query ($conn,"SELECT *FROM coursestudent where studentid='$studentid'");
  echo '<label>Course Name
 
  </label>';

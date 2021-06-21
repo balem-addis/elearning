@@ -24,14 +24,14 @@ if(isset($_SESSION['studentid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['studentid'];
 
-			$result=mysqli_query($conn,"select * from student where studentid='$user_id'")or die(mysqli_error);
+			$result=mysqli_query($conn,"select * from student s, account a where s.studentid='$user_id' and s.studentid=a.studentid")or die(mysqli_error);
 			$row=mysqli_fetch_array($result);
             $studentid=$row['studentid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
 			$sex=$row['sex'];
 			$age=$row['age'];
-				$department=$row['department'];
+				$department=$row['departmentid'];
 		
 			$password=$row['password'];
 			?>
@@ -157,12 +157,12 @@ timeimgs(numb = ++numb);
 if(isset($_POST['changepassword']))
 {
 $oldpass1 = $_POST['old_password'];
-$oldpass=md5($oldpass1);
+//$oldpass=$oldpass1;
 $newpass1 = $_POST['new_password'];
 $confirmpass1 = $_POST['confirm_password'];
-$newpass=md5($newpass1);
-$confirmpass=md5($confirmpass1);
-$result=mysqli_query($conn,"select * from account where password='{$oldpass}' ");
+$newpass=$newpass1;
+$confirmpass=$confirmpass1;
+$result=mysqli_query($conn, "select * from account where password='{$oldpass1}' ");
 if(!$result){
 die("query faile".mysqli_error());
 }
@@ -173,7 +173,7 @@ if(mysqli_num_rows($result)==1){
 		   }
 		   else
 		   {
-  $query="update account set password='{$newpass}' where password='{$oldpass}'";
+  $query="update account set password='{$newpass}' where password='{$oldpass1}'";
         $result=mysqli_query($conn,$query);
 		 echo'  <p class="success"> Your password has been changed successfuly!</p>';
          echo' <meta content="1;login.php" http-equiv="refresh" />';  

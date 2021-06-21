@@ -33,8 +33,8 @@ if(isset($_SESSION['studentid']))
 			$department=$row['department'];
 			$username=$row['username'];
 			$password=$row['password'];*/
-			$result=mysql_query("select * from student s, account a where s.studentid='$user_id' and s.studentid=a.studentid")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn, "select * from student s, account a where s.studentid='$user_id' and s.studentid=a.studentid")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $studentid=$row['studentid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -172,19 +172,19 @@ function isAlphanumeric(elem, helperMsg){
 <center>Select Course Name To See Your Result</CENTER><BR>
 <?php
  //include('connection.php');
-$result_set = mysql_query ("SELECT * FROM coursestudent where studentid='$studentid'");
+$result_set = mysqli_query ($conn, "SELECT * FROM coursestudent where studentid='$studentid'");
  echo '<label>Course Name
 
  </label>';
  echo '<select id="coursename" name="coursecode">';
 echo '<option  selected>..select..</option>';
-while ($row = mysql_fetch_array($result_set)) 
+while ($row = mysqli_fetch_array($result_set)) 
 {
 
 
 $code = $row['coursecode'];
-$sq=mysql_query("select * from course where coursecode='$code'");
-$col=mysql_fetch_array($sq);
+$sq=mysqli_query($conn, "select * from course where coursecode='$code'");
+$col=mysqli_fetch_array($sq);
 $coursename = $col['coursename']; 
 echo "<option value='$code'>$coursename</option>";
 }
@@ -200,12 +200,12 @@ if(isset($_POST['view']))
 {
 	 $coursecode =$_POST['coursecode'];
     $query = "SELECT * FROM result WHERE 	studentid= '{$studentid}'AND coursecode= '{$coursecode}'  ";
-   $result_set=mysql_query($query);
+   $result_set=mysqli_query($conn, $query);
 if(!$result_set)
 	{
-die("query is failed".mysql_error());
+die("query is failed".mysqli_error());
 }
-if(mysql_num_rows($result_set)>0)
+if(mysqli_num_rows($result_set)>0)
 {
 echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
 <tr>
@@ -219,7 +219,7 @@ echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radi
 <th bgcolor='#336699'><font color=white size='2'>Total</th>
 <th bgcolor='#336699'><font color=white size='2'>Grade</th>
 </tr>";
-while($row=mysql_fetch_array($result_set))
+while($row=mysqli_fetch_array($result_set))
 {
 echo"<tr>";
 echo"<td>";echo $row["studentid"]; echo"</td>";

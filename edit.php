@@ -131,7 +131,7 @@ timeimgs(numb = ++numb);
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one"><br><br>
 <?php 
-include('connection.php');
+//include('connection.php');
 $id = $_REQUEST['id'];
 ?>
 <form method="post">
@@ -153,7 +153,7 @@ else
 echo'faild';	
 
 }
-mysql_close($conn);
+mysqli_close($conn);
 ?>
 
 

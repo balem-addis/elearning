@@ -153,7 +153,7 @@ else
 echo'faild';	
 
 }
-mysql_close($conn);
+mysqli_close($conn);
 ?>
 
 
