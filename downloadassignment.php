@@ -192,7 +192,11 @@ DMCTE ELMS</b> </font><BR>
 <fieldset> <legend align="center"> select Course Name to get Assignment No</legend><br><br>
 <?php
  //include('connection.php');
+<<<<<<< HEAD
 $result = mysqli_query ($conn, "SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
+=======
+$result = mysqli_query($conn, "SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
+>>>>>>> 540972b878a0ca9bd9c5fbfc06985b89550bb077
  echo '<label>Select course Name:</label>';
  echo '<select id="ccode" name="coursename">';
 echo '<option selected>..select..</option>';
@@ -333,7 +337,7 @@ else{
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright \A9 2018 DMCTE ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>
