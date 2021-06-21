@@ -24,8 +24,8 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysql_query("select * from instructor where instructorid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -39,8 +39,8 @@ if(isset($_SESSION['instructorid']))
 {    
      //$materialtype=$_POST['materialtype'];
 	 $ccode=$_POST['coursename'];
-	 $res=mysql_query("select * from course where coursecode='{$ccode}'");
-	 $col=mysql_fetch_array($res);
+	 $res=mysqli_query($conn,"select * from course where coursecode='{$ccode}'");
+	 $col=mysqli_fetch_array($res);
 	 $cname=$col['coursename'];
 	foreach($_FILES['files']['tmp_name'] as $key => $name_tmp)
 	{
@@ -63,7 +63,7 @@ else {
 		//$mov=move_uploaded_file($tmpnm,$dir.$name);
 		if($mov)
 		{
-			$res=mysql_query("insert into coursematerial values('','$instructorid','$ccode','$name','$type','$size',now())");
+			$res=mysqli_query($conn,"insert into coursematerial values('','$instructorid','$ccode','$name','$type','$size',now())");
 			if($res)
 			{
 				echo "<script> alert('uploaded successfully!!')</script>";
@@ -206,16 +206,16 @@ timeimgs(numb = ++numb);
 <legend align="center"> upload course material</legend><br><br>
 <?php
  //include('connection.php');
-$result = mysql_query ("SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
+$result = mysqli_query($conn, "SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
  echo '<label>Select course Name:</label>';
  echo '<select id="ccode" name="coursename">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 
 $ccode=$row['coursecode'];
-$sql=mysql_query("select * from course where coursecode='{$ccode}'");
-$col=mysql_fetch_array($sql);
+$sql=mysqli_query($conn,"select * from course where coursecode='{$ccode}'");
+$col=mysqli_fetch_array($sql);
 $cname = $col['coursename']; 
 echo "<option value='$ccode'>$cname</option>";
 }
