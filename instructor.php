@@ -24,8 +24,8 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysql_query("select * from instructor where instructorid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn,"select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
