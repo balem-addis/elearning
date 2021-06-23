@@ -224,6 +224,23 @@ User Name&nbsp;&nbsp;&nbsp;</font></td><td border="0"><input type="text" name="u
 	  echo"Your account is deactivated";
   }}
    
+      if($role=='head')
+  {
+	  $q=mysqli_query($conn,"select * from instructor where instructorid='{$userid}'");
+	  $a=mysqli_fetch_array($q);
+	$status=$a['status'];
+	if($status=='on')
+	{
+	   //session_start();
+		$_SESSION['accountid']=$a['instructorid'];
+	echo "<script>window.location='head.php';</script>";
+	 echo'<meta content="3;login.php" http-equiv="refresh"/>';
+  }
+  else{
+	  
+	  echo"Your account is deactivated";
+  }}
+   
   if($role=='registrar')
   {
 	  $q=mysqli_query($conn,"select * from instructor where instructorid='{$userid}'");

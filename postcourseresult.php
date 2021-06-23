@@ -24,8 +24,8 @@ if(isset($_SESSION['instructorid']))
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['instructorid'];
 
-			$result=mysql_query("select * from instructor where instructorid='$user_id'")or die(mysql_error);
-			$row=mysql_fetch_array($result);
+			$result=mysqli_query($conn, "select * from instructor where instructorid='$user_id'")or die(mysqli_error);
+			$row=mysqli_fetch_array($result);
             $instructorid=$row['instructorid'];
 			$firstname=$row['firstname'];
 			$lastname=$row['lastname'];
@@ -298,16 +298,16 @@ timeimgs(numb = ++numb);
   <br><br>
 <?php
  //include('connection.php');
-$result = mysql_query ("SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
+$result = mysqli_query($conn, "SELECT * FROM courseinstructor where 	instructorid='{$instructorid}'");
  echo '<label>Select course Name:</label>';
  echo '<select id="ccode" name="coursename">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 
 $ccode=$row['coursecode'];
-$sql=mysql_query("select * from course where coursecode='{$ccode}'");
-$col=mysql_fetch_array($sql);
+$sql=mysqli_query($conn, "select * from course where coursecode='{$ccode}'");
+$col=mysqli_fetch_array($sql);
 $cname = $col['coursename']; 
 echo "<option value='$ccode'>$cname</option>";
 }
@@ -322,17 +322,17 @@ echo'<br>';?>
 if(isset($_POST['view']))
 {
 $coursecode=$_POST['coursename'];
-$result = mysql_query ("SELECT * FROM coursestudent where 	coursecode='{$coursecode}'");
-if(mysql_num_rows($result)>0)
+$result = mysqli_query($conn, "SELECT * FROM coursestudent where 	coursecode='{$coursecode}'");
+if(mysqli_num_rows($result)>0)
 {
  echo '<label>Select Student Name:</label>';
  echo '<select id="sid" name="studentname">';
 echo '<option selected>..select..</option>';
-while ($row = mysql_fetch_array($result)) 
+while ($row = mysqli_fetch_array($result)) 
 {
 	$sid=$row['studentid'];
-$std=mysql_query("select * from student where studentid='{$sid}'");
-$col=mysql_fetch_array($std);
+$std=mysqli_query($conn, "select * from student where studentid='{$sid}'");
+$col=mysqli_fetch_array($std);
 $stdname=$col['firstname'].' '.$col['lastname'];
 echo "<option value='$sid'>$stdname</option>";
 }
@@ -368,9 +368,9 @@ if(isset($_POST['post']))
 	
 
 	$coursecode=$_POST['coursename'];	
-	$res=mysql_query("select * from result where studentid='{$studentid}' AND coursecode='{$coursecode}'");
-	$row=mysql_fetch_array($res);
-	if(mysql_num_rows($res)==1)
+	$res=mysqli_query($conn, "select * from result where studentid='{$studentid}' AND coursecode='{$coursecode}'");
+	$row=mysqli_fetch_array($res);
+	if(mysqli_num_rows($res)==1)
 	{
 		echo"sorry the result of this student is already posted before!";
 		
@@ -405,7 +405,7 @@ if(isset($_POST['post']))
 	$grade="F";
 	}
 	
-	$res=mysql_query("insert into result values('',$instructorid,'$studentid','$coursecode','$quizz','$test',
+	$res=mysqli_query($conn, "insert into result values('',$instructorid,'$studentid','$coursecode','$quizz','$test',
 	'$individual','$group','$final','$total','$grade')");
 	
 			echo"sucessfully posted";
@@ -437,7 +437,7 @@ if(isset($_POST['post']))
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright \A9 2018 DMCTE ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

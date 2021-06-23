@@ -29,6 +29,7 @@ if(isset($_SESSION['accountid']))
 			$username=$row['username'];
 			$password=$row['password'];
 			?>
+			
 <html>
 <head>
 <link style="text/css" href="3.css" rel="stylesheet">
@@ -104,7 +105,7 @@ timeimgs(numb = ++numb);
 	
 	
 
-	  <li><a href="viewinstructor.php">View Account</a>
+	  <li><a href="#">View Account</a>
       <ul>
 	        
 		<!--<li><a href="viewdean.php">&nbsp; Dean & registrar</a></li>-->
@@ -126,75 +127,13 @@ timeimgs(numb = ++numb);
 </table><br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- DMCTE E-Learning</b> </font><BR>
+ DMCTE ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
-<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one"><br><br>
-<form action="viewcourse.php" method="post">
+<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
 
-<?php
-/*mysql_connect("localhost","root","");
-mysql_select_db("e-learning");
- */
-if(isset($_POST['view']))
-{
-	
-$deptid=$_POST['departmentname'];
-    $query = "SELECT * FROM course where departmentid='{$deptid}'  ";
-   $result_set=mysqli_query($conn,$query);
-if(!$result_set)
-	{
-die("query is failed".mysqli_error());
-}
-if(mysqli_num_rows($result_set)>0)
-{
-echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
-<tr>
-<th bgcolor='#336699'><font color='white' size='2'>course code</th>
-<th bgcolor='#336699'><font color='white' size='2'>course Name</th>
-<th bgcolor='#336699'><font color='white' size='2'>credit hour</th>
-<th bgcolor='#336699'><font color=white size='2'>pre-requiest</th>
-<th bgcolor='#336699'><font color=white size='2'>Department</th>
-<th bgcolor='#336699'><font color=white size='2'>Year</th>
-<th bgcolor='#336699'><font color=white size='2'>Semister</th>
-
-
-</tr>";
-while($row=mysqli_fetch_array($result_set))
-{
-	$deptid=$row['departmentid'];
-	$dept=mysqli_query($conn,"select * from department where departmentid='{$deptid}'");
-	$col=mysqli_fetch_array($dept);
-	
-echo"<tr>";
-echo"<td>";echo $row["coursecode"]; echo"</td>";
-echo"<td>";echo $row["coursename"]; echo"</td>";
-echo"<td>";echo $row["credit"]; echo"</td>";
-echo"<td>";echo $row["prerequiest"]; echo"</td>";
-echo"<td>";echo $col['departmentname']; echo"</td>";
-echo"<td>";echo $row["year"]; echo"</td>";
-echo"<td>";echo $row["semister"]; echo"</td>";
-
-
-
-
-echo"</tr>";
-}
-echo "</table>";
-
-}
-else{
-   echo '<center>';
-  echo '<font face="monotype corsiva" size="5"color="red">course not found !!</font>'; 
-  
-   echo '</center>';
-}}
-
-?>
-
-
-</fieldset>
-</form>
-</td>
+<!--img src="images/dean.png" width="600"-->
+Well come to Department Head page
+  </td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >
 </td></tr>
@@ -204,14 +143,14 @@ else{
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
 <a href="viewdepartment1.php"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* View Department</font></a><br>
-<a href="http://www.DMCTE.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * DMCTE webSite </font></a><br>
+<a href="http://www.dbu.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * DMCTE webSite </font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
 </tr>
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright Â© 2018 DMCTE ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>
