@@ -71,7 +71,7 @@
 </tr>
 </table>
 <table border="1"  width="1210"height="450" bgcolor=ffffff>
-<tr><td valign="center" align="center" bgcolor=#669999><font  color="white" ><b><br><br>DMCTE E-Learning </font></b><BR>
+<tr><td valign="center" align="center" bgcolor=#669999><font  color="white" ><b><br><br>BTVTC ELMS </font></b><BR>
 <img src="images/elearning7.png"  width="250" height="150"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" class="one"><br><br>
 <form action="viewregistrar.php" method="post">
@@ -141,7 +141,7 @@ else{
 
 <tr>
 <td  bgcolor=#669999  valign="top" rowspan=3><font  color="white" ><center><b><h3>Related Links</h3></b></center></font>
-<a href="http://www.DMCTE.edu.et"class="b" >  <font size="5"  color="white">&nbsp;&nbsp;&nbsp;* DMCTE website</a><br></font>
+<a href="http://www.BTVTC.edu.et"class="b" >  <font size="5"  color="white">&nbsp;&nbsp;&nbsp;* BTVTC website</a><br></font>
 <a href="site.php"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="white">* Site map</a><br></font>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="white"> * gmail</a></td>
 </font>
@@ -149,7 +149,7 @@ else{
 </table>
 </td>
 </tr>
-<tr><td align="center" colspan=5 bgcolor=#669999 border="0" width="25" >Copyright © 2018 DMCTE ELMS. All rights reserved.</td></tr>
+<tr><td align="center" colspan=5 bgcolor=#669999 border="0" width="25" >Copyright © 2021 BTVTC ELMS. All rights reserved.</td></tr>
 
 </table></body>
 </html>

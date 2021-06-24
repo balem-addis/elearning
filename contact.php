@@ -64,7 +64,7 @@ timeimgs(numb = ++numb);
 <tr>
 <td  border="0"align="center"></td>
 tr>
-<td  border="0"align="center"><img src="images/header.png" width="600" height="50"></td>
+<td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
 
 
 </tr></table>
@@ -85,7 +85,7 @@ tr>
 <br><br>
 <table border="0"  width="1210"height="450" align="center" >
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- DMCTE ELMS</b> </font><BR>
+ BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" class="one"  bgcolor="ffffff"><div><p><center>
    <h3>&nbsp;</h3>
@@ -99,13 +99,13 @@ tr>
    <p class="w"> 
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 <u>  YOU CAN CONTACT US BY THE FOLLOWING ADDRESS</u><BR><BR><BR><BR><BR>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TEL1: 1012<BR><BR>
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TEL2: 1014<BR><BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;TEL1: 0586651368<BR><BR>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TEL2: 0586651496<BR><BR>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <BR><BR>
  
   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;P.O.Box 2021
   
-     Bahirdar, Ethiopia
+     AMHARA REGION BICHENA, Ethiopia
    
    
    
@@ -126,7 +126,7 @@ tr>
 <tr>
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
-<a href="http://www.dbu.edu.et"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* DMCTE website</font></a><br>
+<a href="http://www.BTVTC.edu.et"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* BTVTC website</font></a><br>
 <a href="site.php"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * Site map</font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
@@ -134,7 +134,7 @@ tr>
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

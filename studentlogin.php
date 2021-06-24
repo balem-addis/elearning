@@ -157,7 +157,7 @@ mysql_close($conn);
 
 <tr>
 <td  bgcolor=#669999  valign="top" rowspan=3><font  color="white" ><center><b><h3>Related Links</h3></b></center></font>
-<a href="http://www.DMCTE.edu.et"class="b" >  <font size="5"  color="white">&nbsp;&nbsp;&nbsp;* DMCTE website</a></font><br>
+<a href="http://www.BTVTC.edu.et"class="b" >  <font size="5"  color="white">&nbsp;&nbsp;&nbsp;* BTVTC website</a></font><br>
 <a href="site.php"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="white">* Site map</a></font><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="white"> * gmail</a></font></td>
 
@@ -165,7 +165,7 @@ mysql_close($conn);
 </table>
 </td>
 </tr>
-<tr><td align="center" colspan=5 bgcolor=#669999 border="0" width="25" >Copyright © 2018 DMCTE ELMS. All rights reserved.</td></tr>
+<tr><td align="center" colspan=5 bgcolor=#669999 border="0" width="25" >Copyright © 2021 BTVTC ELMS. All rights reserved.</td></tr>
 
 </table></body>
 </html>

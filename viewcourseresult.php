@@ -143,7 +143,7 @@ function isAlphanumeric(elem, helperMsg){
 <table align="center" border="0" width="1300"height="100" style="background-image:url(images/headerbg.png)">
 <tr>
 <td  border="0"align="center"></td>
-<td  border="0"align="center"><img src="images/header.png" width="600" height="50"></td>
+<td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
 </tr></table>
 
 <table border="0" width="1300"height="40" align="center" bgcolor=#778899 >
@@ -161,7 +161,7 @@ function isAlphanumeric(elem, helperMsg){
 <br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
-  DBTEVTC E-Learning</b> </font><BR>
+  BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
 
@@ -272,7 +272,7 @@ else
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE E-learning system. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

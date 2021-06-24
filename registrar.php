@@ -86,7 +86,7 @@ timeimgs(numb = ++numb);
 <table align="center" border="0" width="1300"height="100" style="background-image:url(images/headerbg.png)">
 <tr>
 <td  border="0"align="center"></td>
-<td  border="0"align="center"><img src="images/header.png" width="600" height="50"></td>
+<td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
 </tr></table>
 
 <table border="0" width="1300"height="40" align="center" bgcolor=#778899 >
@@ -136,7 +136,7 @@ timeimgs(numb = ++numb);
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

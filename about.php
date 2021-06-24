@@ -63,7 +63,7 @@ timeimgs(numb = ++numb);
 <tr>
 <td  border="0"align="center"></td>
 <tr>
-<td  border="0"align="center"><img src="images/header.png" width="600" height="50"></td>
+<td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
 
 <td  border="0"align="center"></td>
 <table border="0" align="center" >
@@ -100,7 +100,7 @@ timeimgs(numb = ++numb);
    <h4>1.1.	 Background of the project &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-BICHENA college of Teachers education is located in Debre markos city of Amhara Regional state, which is 3265kms north of Addis Ababa. The college opened in 1994 E.C. The main objective of the college is to provide teachers and education experts capable of building up citizens by shaping the generation with knowledge, morality, ability and skills, feeling national responsibilities, enjoying positive human and democratic outlook, having developed research capacity, standing for the quality and development of education and equipped with ethical values of teaching and other related professions committed to serving the society to the best of their capacity and ability. Regarding this the teaching learning process takes the key position and learning process needs techniques and tools to present the knowledge (from different resources) interact with it and share it with others. In this context, E-Learning is becoming an important tool to support the learning system to achieve its goal. E-Learning became hot topic in the 1990's after the spread of the Internet. 
+BICHENA technicale and vocationale college of  education is located in Bichena city of Amhara Regional state, which is 265kms north of Addis Ababa. The college opened in 2001 E.C. The main objective of the college is to provide teachers and education experts capable of building up citizens by shaping the generation with knowledge, morality, ability and skills, feeling national responsibilities, enjoying positive human and democratic outlook, having developed research capacity, standing for the quality and development of education and equipped with ethical values of teaching and other related professions committed to serving the society to the best of their capacity and ability. Regarding this the teaching learning process takes the key position and learning process needs techniques and tools to present the knowledge (from different resources) interact with it and share it with others. In this context, E-Learning is becoming an important tool to support the learning system to achieve its goal. E-Learning became hot topic in the 1990's after the spread of the Internet. 
 </h4>
  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
 
@@ -123,7 +123,7 @@ BICHENA college of Teachers education is located in Debre markos city of Amhara 
 <tr>
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
-<a href="http://www.BDu.edu.et"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* DMCTE website</font></a><br>
+<a href="http://www.BTVTC.edu.et"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* BTVETC website</font></a><br>
 <a href="site.php"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * Site map</font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
@@ -131,7 +131,7 @@ BICHENA college of Teachers education is located in Debre markos city of Amhara 
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

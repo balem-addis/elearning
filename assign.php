@@ -149,7 +149,7 @@ function madeSelection(elem, helperMsg){
 <tr><td>
 <table align="center" border="0" width="1300"height="100" style="background-image:url(images/headerbg.png)">
 <tr>tr>
-<td  border="0"align="center"><img src="images/header.png" width="600" height="50"></td>
+<td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
 
 <td  border="0"align="center"></td>
 
@@ -281,14 +281,14 @@ echo'<meta content="3;assign.php" http-equiv="refresh"/>';
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
 <a href="viewdepartment1.php"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* View Department</font></a><br>
-<a href="http://www.dbu.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * DMCTE webSite </font></a><br>
+<a href="http://www.BTVT.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * BTVTC webSite </font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
 </tr>
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2018 DMCTE ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>
