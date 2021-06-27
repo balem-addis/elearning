@@ -30,6 +30,7 @@ if(isset($_SESSION['accountid']))
 			$password=$row['password'];
 			?>
 			
+
 <html>
 <head>
 <link style="text/css" href="3.css" rel="stylesheet">
@@ -75,15 +76,83 @@ timeimgs(numb = ++numb);
 }
 
 </script>
+<style type="text/css">
+.one form fieldset legend {
+	font-family: Georgia, Times New Roman, Times, serif;
+}
+.one form fieldset legend {
+	font-family: "Times New Roman", Times, serif;
+}
+.one form fieldset legend {
+	font-weight: bold;
+}
+.one form fieldset legend {
+	font-style: italic;
+}
+.one form fieldset {
+	font-weight: bold;
+	font-style: italic;
+	font-size: 16px;
+}
+</style>
+<script type='text/javascript'>
+function check()
+{
+
+
+        var insid = document.getElementById('instructorname');
+      var ccode = document.getElementById('coursename');
+	  var dept = document.getElementById('department');
+	   var year = document.getElementById('year');
+	  var sem=document.getElementById('sem');
+	var sec = document.getElementById('sec');
+	
+		
+	 
+
+		
+		
+			  if(madeSelection(insid,"please choose Instructor Name")){	
+			  if(madeSelection(ccode,"please choose course name")){
+			  if(madeSelection(dept,"please choose department")){
+				   if(madeSelection(year,"please select year")){
+					    if(madeSelection(sem,"please select semister")){
+							 if(madeSelection(sec,"please choose section")){
+			 return true;
+
+						}}} }}} 
+	return false;
+	
+}
+	
+  
+
+
+
+function madeSelection(elem, helperMsg){
+	if(elem.value =="..select.."){
+	alert(helperMsg);
+		elem.focus();
+		return false;
+		}
+	else{
+		return true;
+		
+	}
+	
+}
+</script>
 </head>
 <body  onLoad="timeimgs('1');"style="background-image:url(images/background.jpg)"
 
 <table border="0" align="center" >
 <tr><td>
 <table align="center" border="0" width="1300"height="100" style="background-image:url(images/headerbg.png)">
-<tr>
-<td  border="0"align="center"></td>
+<tr>tr>
 <td  border="0"align="center"><img src="images/HEAD.png" width="600" height="50"></td>
+
+<td  border="0"align="center"></td>
+
 </tr></table>
 
 <table border="0" width="1300"height="30" align="center" bgcolor=#778899 >
@@ -127,13 +196,76 @@ timeimgs(numb = ++numb);
 </table><br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- BTVTC ELMS</b> </font><BR>
+  DMCTE E-Learning</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
 
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
-  </td>
+<form action="assignhead.php" method="post" name="assign" onSubmit="return check()">&nbsp;&nbsp;<br><br>
+<fieldset><legend align="center"> Assign instructor</legend><br>
+<?php
+ //include('connection.php');
+$result = mysqli_query($conn, "SELECT * FROM instructor  where status='on' ORDER BY firstname");
+ echo '<label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+ Instructor Name&nbsp&nbsp</label>';
+ echo '<select id="instructorname" name="instructorname">';
+echo '<option selected>..select..</option>';
+while ($row = mysqli_fetch_array($result)) 
+{
+
+$vaa = $row['firstname'].' '.$row['midlename'].' '.$row['lastname']; 
+$id = $row['instructorid'];
+echo "<option value='$id'>$vaa</option>";
+}
+echo '</select>';
+echo'<br>';
+echo'<br>';?>
+<?php
+ //include('connection.php');
+$result_set = mysqli_query($conn,"SELECT * FROM course");
+ echo '<label>Course Name&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+ </label>';
+ echo '<select id="coursename" name="coursename">';
+echo '<option  selected>..select..</option>';
+while ($row = mysqli_fetch_array($result_set)) 
+{
+
+$coursename = $row['coursename']; 
+$code = $row['coursecode'];
+echo "<option value='$code'>$coursename</option>";
+}
+
+echo '</select>';
+echo'<br>';
+echo'<br>';?>
+
+<center>
+<input type="submit" value="assign" name="assign"></center>
+
+
+<?php
+if(isset($_POST['assign']))
+{
+
+$instructorname=$_POST['instructorname'];
+$ccode=$_POST['coursename'];
+
+$reg=mysqli_query($conn,"insert into courseinstructor (`instructorid`,`coursecode`) values ('$instructorname','$ccode')");
+if($reg)
+	{	
+echo "successfully assigned !!";
+echo'<meta content="3;assignhead.php" http-equiv="refresh"/>';
+}
+			else
+			{
+			echo"faild";
+			echo'<meta content="3;assignhead.php" http-equiv="refresh"/>';
+			}}
+			
+?>
+
+</fieldset>
+</form></td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >
 </td></tr>
@@ -143,14 +275,14 @@ Well come to Department Head page
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
 <a href="viewdepartmenthead.php"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* View Department</font></a><br>
-<a href="http://www.BTVTC.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * BTVTC webSite </font></a><br>
+<a href="http://www.BTVT.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * BTVTC webSite </font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
 </tr>
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright Â© 2021 BTVTC ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

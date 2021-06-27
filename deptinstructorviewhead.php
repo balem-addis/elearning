@@ -15,7 +15,8 @@ if(isset($_SESSION['accountid']))
  }
  ?>
  <?php
-			
+			//include('connection.php');
+			//session_start();
 
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
@@ -26,8 +27,8 @@ if(isset($_SESSION['accountid']))
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
 			$lastname=$row['lastname'];
-			$username=$row['username'];
-			$password=$row['password'];
+			//$username=$row['username'];
+			//$password=$row['password'];
 			?>
 			
 <html>
@@ -75,6 +76,29 @@ timeimgs(numb = ++numb);
 }
 
 </script>
+<script type="text/javascript">
+function check()
+{
+	 var dept = document.getElementById('department');
+	 if(madeSelection(dept,"please choose department Name")){
+	 return true;
+	 }
+return false;	 	
+}
+function madeSelection(elem, helperMsg){
+	if(elem.value =="..select.."){
+	alert(helperMsg);
+		elem.focus();
+		return false;
+		}
+	else{
+		return true;
+		
+	}
+	
+}
+
+</script>
 </head>
 <body  onLoad="timeimgs('1');"style="background-image:url(images/background.jpg)"
 
@@ -96,7 +120,7 @@ timeimgs(numb = ++numb);
    <a href="assignhead.php">Assign Instructor</a></li>
   
    <li><a href="createinstructorhead.php">Create Account</a>
-      <!--<ul>
+     <!-- <ul>
 	        
 		<li><a href="createdean.php">&nbsp;Dean and Registrar</a>
 		<li><a href="createinstructor.php">&nbsp;&nbsp;Instructor</a>
@@ -118,8 +142,8 @@ timeimgs(numb = ++numb);
 	  </ul>
 	</li>
 	 <li>
-   <a href="deptinstructorviewhead.php">View CourseInstructor</a></li>
-	 <li><a href="viewdepartmentcoursehead.php">View Courses</a></li>
+   <a href="viewcourseinstructorhead.php">View CourseInstructor</a></li>
+	 <li><a href="deptinstructorviewhead.php">View Courses</a></li>
 	<li><font size="4px"><a href="logout.php" id="logout" align="right">Logout</a></font></li>
 </div>
 </td>
@@ -127,12 +151,28 @@ timeimgs(numb = ++numb);
 </table><br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- BTVTC ELMS</b> </font><BR>
+BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
-
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
+<br><br>
+<form action ="viewcourseinstructorhead.php" method="post"  onSubmit="return check()">
+<?php
+ //include('connection.php');
+$result = mysqli_query ($conn, "SELECT *FROM department");
+ echo '<label>Department Name&nbsp</label>';
+ echo '<select id="department" name="departmentname">';
+echo '<option  selected>..select..</option>';
+while ($row = mysqli_fetch_array($result)) 
+{
+$depid = $row['departmentid'];
+$deptname = $row['departmentname']; 
+echo "<option value='$depid'>$deptname</option>";
+}
+echo '</select>';
+echo'<br>';
+echo'<br>';?>
+<input type="submit" name="view" value="view">
+</form>
   </td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >

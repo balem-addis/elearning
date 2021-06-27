@@ -15,7 +15,8 @@ if(isset($_SESSION['accountid']))
  }
  ?>
  <?php
-			
+			//include('connection.php');
+			//session_start();
 
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
@@ -26,10 +27,9 @@ if(isset($_SESSION['accountid']))
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
 			$lastname=$row['lastname'];
-			$username=$row['username'];
-			$password=$row['password'];
+			//$username=$row['username'];
+			//$password=$row['password'];
 			?>
-			
 <html>
 <head>
 <link style="text/css" href="3.css" rel="stylesheet">
@@ -91,12 +91,12 @@ timeimgs(numb = ++numb);
 <td bgcolor=#778899 align="center" valign="bottom">
   <div id="dropdown">
     <li>
-   <a href="head.php">Home</a></li>
+   <a href="dean.php">Home</a></li>
    <li>
-   <a href="assignhead.php">Assign Instructor</a></li>
+   <a href="assign.php">Assign Instructor</a></li>
   
-   <li><a href="createinstructorhead.php">Create Account</a>
-      <!--<ul>
+   <li><a href="createinstructor.php">Create Account</a>
+        <!--<ul>
 	        
 		<li><a href="createdean.php">&nbsp;Dean and Registrar</a>
 		<li><a href="createinstructor.php">&nbsp;&nbsp;Instructor</a>
@@ -109,8 +109,8 @@ timeimgs(numb = ++numb);
       <ul>
 	        
 		<!--<li><a href="viewdean.php">&nbsp; Dean & registrar</a></li>-->
-		<li><a href="viewinstructorhead.php">&nbsp;&nbsp;Active Instructor</a>
-		<li><a href="inactiveinstructorhead.php">&nbsp;&nbsp;Inactive Instructor</a></li>
+		<li><a href="viewinstructor.php">&nbsp;&nbsp;Active Instructor</a>
+		<li><a href="inactiveinstructor.php">&nbsp;&nbsp;Inactive Instructor</a></li>
 		
 		
 		
@@ -118,8 +118,8 @@ timeimgs(numb = ++numb);
 	  </ul>
 	</li>
 	 <li>
-   <a href="deptinstructorviewhead.php">View CourseInstructor</a></li>
-	 <li><a href="viewdepartmentcoursehead.php">View Courses</a></li>
+   <a href="deptinstructorview.php">View CourseInstructor</a></li>
+	 <li><a href="viewdepartmentcourse.php">View Courses</a></li>
 	<li><font size="4px"><a href="logout.php" id="logout" align="right">Logout</a></font></li>
 </div>
 </td>
@@ -127,13 +127,79 @@ timeimgs(numb = ++numb);
 </table><br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- BTVTC ELMS</b> </font><BR>
+BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
-<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
+<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one"><br><br>
+<form action="viewcourseinstructor.php" method="post">
 
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
-  </td>
+<?php
+//mysqli_connect("localhost","root","");
+//mysql_select_db("e-learning");
+ if(isset($_POST['view']))
+ {
+  $deptid =$_POST['departmentname'];
+    $result_set =mysqli_query($conn, "SELECT * FROM course where departmentid='{$deptid}'  ") ;
+
+$c=mysqli_fetch_array($result_set);
+$coursecode=$c['coursecode'];
+$ci=mysqli_query($conn, "select * from courseinstructor where coursecode='$coursecode'");
+if(mysqli_num_rows($ci)>0)
+{
+echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
+<tr>
+<th bgcolor='#336699'><font color='white' size='2'>courseIns_ID</th>
+<th bgcolor='#336699'><font color='white' size='2'>Instructor Name</th>
+<th bgcolor='#336699'><font color='white' size='2'>Course Name</th>
+<th bgcolor='#336699'><font color='white' size='2'>course code</th>
+<th bgcolor='#336699'><font color='white' size='2'>department Name</th>
+<th bgcolor='#336699'><font color='white' size='2'>year</th>
+<th bgcolor='#336699'><font color=white size='2'>semister</th>
+<th bgcolor='#336699'><font color=white size='2'>section</th>
+
+</tr>";
+
+while($row=mysqli_fetch_array($ci))
+{
+	
+	$code=$row["coursecode"];
+	$cname=$c['coursename'];
+	$insid= $row["instructorid"];
+	$ins=mysqli_query($conn, "select * from instructor where instructorid='{$insid}'");
+	$row1=mysqli_fetch_array($ins);
+	$departmentid=$row1['departmentid'];
+	$dept=mysqli_query($conn, "select * from department where departmentid='{$departmentid}'");
+	$row3=mysqli_fetch_array($dept);
+echo"<tr>";
+echo"<td>";echo $row["courseinstructorid"]; echo"</td>";
+echo"<td>"; echo $row1["firstname"].' '.$row1['midlename'];echo"</td>";
+echo"<td>";echo $row2["coursename"]; echo"</td>";
+echo"<td>";echo $row["coursecode"]; echo"</td>";
+echo"<td>";echo $row3["departmentname"]; echo"</td>";
+echo"<td>";echo $row["year"]; echo"</td>";
+echo"<td>";echo $row["semister"]; echo"</td>";
+echo"<td>";echo $row["section"]; echo"</td>";
+
+
+
+
+echo"</tr>";
+}
+echo "</table>";
+
+}
+else{
+   echo '<center>';
+  echo '<font face="monotype corsiva" size="5"color="red"> not found !!</font>'; 
+  
+   echo '</center>';
+   }
+ }
+?>
+
+
+</fieldset>
+</form>
+</td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >
 </td></tr>
@@ -142,7 +208,7 @@ Well come to Department Head page
 <tr>
 <td   valign="top" rowspan=3><font  color="blue" >
   <center><b><h3>Related Links</h3></b></center></font>
-<a href="viewdepartmenthead.php"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* View Department</font></a><br>
+<a href="viewdepartment1.php"class="b" > &nbsp;&nbsp;&nbsp; <font size="5"  color="blue">* View Department</font></a><br>
 <a href="http://www.BTVTC.edu.et"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue"> * BTVTC webSite </font></a><br>
 <a href="http://www.gmail.com"class="b">&nbsp;&nbsp;&nbsp;&nbsp; <font size="5"  color="blue">  * gmail</font></a></td>
 
@@ -150,7 +216,7 @@ Well come to Department Head page
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright Â© 2021 BTVTC ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

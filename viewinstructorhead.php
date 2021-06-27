@@ -29,7 +29,6 @@ if(isset($_SESSION['accountid']))
 			$username=$row['username'];
 			$password=$row['password'];
 			?>
-			
 <html>
 <head>
 <link style="text/css" href="3.css" rel="stylesheet">
@@ -75,6 +74,9 @@ timeimgs(numb = ++numb);
 }
 
 </script>
+<style type="text/css">
+
+</style>
 </head>
 <body  onLoad="timeimgs('1');"style="background-image:url(images/background.jpg)"
 
@@ -96,7 +98,7 @@ timeimgs(numb = ++numb);
    <a href="assignhead.php">Assign Instructor</a></li>
   
    <li><a href="createinstructorhead.php">Create Account</a>
-      <!--<ul>
+        <!--<ul>
 	        
 		<li><a href="createdean.php">&nbsp;Dean and Registrar</a>
 		<li><a href="createinstructor.php">&nbsp;&nbsp;Instructor</a>
@@ -129,11 +131,63 @@ timeimgs(numb = ++numb);
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
  BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
-<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
+<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one"><br><br>
+<form action="viewinstructorhead.php" method="post">
 
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
-  </td>
+
+<?php
+//include('connection.php');
+
+    $result_set = mysqli_query($conn,"SELECT * FROM instructor where status='on'");
+if(!$result_set)
+	{
+die("query is failed".mysqli_error());
+}
+if(mysqli_num_rows($result_set)>0)
+{
+echo "<table id='vtable' style='width:600px;border:1px solid #336699;border-radius:10px;' align='center'><font color=white>
+<tr>
+<th bgcolor='#336699'><font color='white' size='2'>Instructor id</th>
+<th bgcolor='#336699'><font color='white' size='2'>First Name</th>
+<th bgcolor='#336699'><font color='white' size='2'>Midle Name</th>
+<th bgcolor='#336699'><font color='white' size='2'>Last Name</th>
+<th bgcolor='#336699'><font color=white size='2'>Sex</th>
+<th bgcolor='#336699'><font color=white size='2'>Status</th>
+
+</tr>";
+while($row=mysqli_fetch_array($result_set))
+{
+echo"<tr>";
+echo"<td>";echo $row["instructorid"]; echo"</td>";
+echo"<td>";echo $row["firstname"]; echo"</td>";
+echo"<td>";echo $row["midlename"]; echo"</td>";
+echo"<td>";echo $row["lastname"]; echo"</td>";
+echo"<td>";echo $row["sex"]; echo"</td>";
+echo"<td>";echo $row["status"]; echo"</td>";
+echo"<td><a href=edit1.php?id=".$row['instructorid'].">Edit Status</a></td>";
+
+
+
+
+
+
+echo"</tr>";
+}
+echo "</table>";
+
+}
+else{
+   echo '<center>';
+  echo '<font face="monotype corsiva" size="5"color="red">account not found !!</font>'; 
+  
+   echo '</center>';
+   }
+
+?>
+
+
+</fieldset>
+</form>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >
 </td></tr>
@@ -150,7 +204,7 @@ Well come to Department Head page
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright Â© 2021 BTVTC ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

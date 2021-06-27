@@ -15,7 +15,8 @@ if(isset($_SESSION['accountid']))
  }
  ?>
  <?php
-			
+			//include('connection.php');
+			//session_start();
 
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
@@ -26,8 +27,8 @@ if(isset($_SESSION['accountid']))
 			$firstname=$row['firstname'];
 			$midlename=$row['midlename'];
 			$lastname=$row['lastname'];
-			$username=$row['username'];
-			$password=$row['password'];
+			//$username=$row['username'];
+			//$password=$row['password'];
 			?>
 			
 <html>
@@ -72,6 +73,29 @@ document["demo"].src = eval("demo" + numb + ".src");
 timeimgs(numb = ++numb);
 }
 }
+}
+
+</script>
+<script type="text/javascript">
+function check()
+{
+	 var dept = document.getElementById('department');
+	 if(madeSelection(dept,"please choose department Name")){
+	 return true;
+	 }
+return false;	 	
+}
+function madeSelection(elem, helperMsg){
+	if(elem.value =="..select.."){
+	alert(helperMsg);
+		elem.focus();
+		return false;
+		}
+	else{
+		return true;
+		
+	}
+	
 }
 
 </script>
@@ -130,9 +154,25 @@ timeimgs(numb = ++numb);
  BTVTC ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
-
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
+<br><br>
+<form action ="viewdepartmentcoursehead.php" method="post" onSubmit="return check()">
+<?php
+// include('connection.php');
+$result = mysqli_query($conn,"SELECT *FROM department");
+ echo '<label>Department Name&nbsp</label>';
+ echo '<select id="department" name="departmentname">';
+echo '<option  selected>..select..</option>';
+while ($row = mysqli_fetch_array($result)) 
+{
+$depid = $row['departmentid'];
+$deptname = $row['departmentname']; 
+echo "<option value='$depid'>$deptname</option>";
+}
+echo '</select>';
+echo'<br>';
+echo'<br>';?>
+<input type="submit" name="view" value="view">
+</form>
   </td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >

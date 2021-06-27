@@ -15,7 +15,8 @@ if(isset($_SESSION['accountid']))
  }
  ?>
  <?php
-			
+			//include('connection.php');
+			//session_start();
 
 			//mag show sang information sang user nga nag login
 			$user_id=$_SESSION['accountid'];
@@ -29,7 +30,6 @@ if(isset($_SESSION['accountid']))
 			$username=$row['username'];
 			$password=$row['password'];
 			?>
-			
 <html>
 <head>
 <link style="text/css" href="3.css" rel="stylesheet">
@@ -96,11 +96,11 @@ timeimgs(numb = ++numb);
    <a href="assignhead.php">Assign Instructor</a></li>
   
    <li><a href="createinstructorhead.php">Create Account</a>
-      <!--<ul>
+      <!--ul>
 	        
 		<li><a href="createdean.php">&nbsp;Dean and Registrar</a>
 		<li><a href="createinstructor.php">&nbsp;&nbsp;Instructor</a>
-	 </ul>-->
+	 </ul-->
 	</li>
 	
 	
@@ -108,7 +108,7 @@ timeimgs(numb = ++numb);
 	  <li><a href="#">View Account</a>
       <ul>
 	        
-		<!--<li><a href="viewdean.php">&nbsp; Dean & registrar</a></li>-->
+		<!--li><a href="viewdean.php">&nbsp; Dean & registrar</a></li-->
 		<li><a href="viewinstructorhead.php">&nbsp;&nbsp;Active Instructor</a>
 		<li><a href="inactiveinstructorhead.php">&nbsp;&nbsp;Inactive Instructor</a></li>
 		
@@ -118,7 +118,7 @@ timeimgs(numb = ++numb);
 	  </ul>
 	</li>
 	 <li>
-   <a href="deptinstructorviewhead.php">View CourseInstructor</a></li>
+   <a href="viewcourseinstructorhead.php">View CourseInstructor</a></li>
 	 <li><a href="viewdepartmentcoursehead.php">View Courses</a></li>
 	<li><font size="4px"><a href="logout.php" id="logout" align="right">Logout</a></font></li>
 </div>
@@ -127,13 +127,41 @@ timeimgs(numb = ++numb);
 </table><br><br>
 <table border="0"  width="1210"height="450"  align="center">
 <tr ><td width="210" align="center" valign="center" ><font  color="white" ><b><br>
- BTVTC ELMS</b> </font><BR>
+   BTVT ELMS</b> </font><BR>
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
-<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
+<td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one"><br><br>
+<?php 
+//include('connection.php');
+$id = $_REQUEST['id'];
+?>
+<form method="post">
+<select name="status" id="change" ><option value="on">On</option>
+</select>
+<input type="submit" name="change" value="change"/>
 
-<!--img src="images/dean.png" width="600"-->
-Well come to Department Head page
-  </td>
+
+<?php
+if(isset($_POST['change'])){
+   $ss =$_POST['status'];
+   $up = mysqli_query($conn,"UPDATE instructor SET status='$ss' WHERE instructorid = '$id'");
+   if($up)
+{
+echo "Success!";	
+echo "<script>window.location='inactiveinstructorhead.php';</script>";
+}
+else
+echo'faild';	
+
+}
+mysqli_close($conn);
+?>
+
+
+
+
+</fieldset>
+</form>
+</td>
 <td rowspan=3 width="300" >
 <img src="" height="320" width="300" name="demo" >
 </td></tr>
@@ -150,7 +178,7 @@ Well come to Department Head page
 </table>
 </td>
 </tr><br>
-<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVTC ELMS. All rights reserved.</td>
+<tr style="background-image:url(images/headerbg.png)" border="0" ><td align="center"   >Copyright © 2021 BTVT ELMS. All rights reserved.</td>
 </tr>
 
 </table></body>

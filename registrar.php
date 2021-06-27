@@ -93,6 +93,7 @@ timeimgs(numb = ++numb);
 <tr>
 <td align="center" valign="bottom" bgcolor=#778899><b><a href="registrar.php"class="a">Home</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="registerstudent.php"class="a">Register Student</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="importstudent.php"class="a">Import Student Data</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="registercourse.php"class="a">Curiculum Registration</a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="department.php"class="a">Department</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

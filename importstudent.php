@@ -252,102 +252,68 @@ function madeSelection(elem, helperMsg){
 <img src="images/e-learning.jpg"  width="250" height="250"></td>
 <td width="700" height="300" rowspan=4 align="center"valign="top" bgcolor="#FFFFFF" class="one">
 <br><BR>
-<form action="registerstudent.php" method="post" name="register" onSubmit="return check()">
-<fieldset><legend align="center"><span class="w"><span class="w"> student registration form</span></span></legend>
-  <span class="w"><span class="w">&nbsp;<br><br>
-First Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="fname" id="fname" size="20%"><br><br>
-Middle Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="mname" id="mname" size="20%"><br><br>
-Last Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="lname" id="lname" size="20%"><br><br>
-Id Number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id" id="id" size="20%"><br><br>
-Age&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="text" name="age" id="age" size="20%"
- onkeypress='return event.charCode >= 48 && event.charCode <= 57'><br><br>
- <?php
- //include('connection.php');
-$result_set = mysqli_query($conn,"SELECT *FROM department");
- echo '<label>Department&nbsp</label>';
- echo '<select id="dept" name="department">';
-echo '<option  selected>..select..</option>';
-while ($row = mysqli_fetch_array($result_set)) 
-{
-
-$department = $row['departmentname']; 
-$departmentid = $row['departmentid'];
-
-echo "<option value='$departmentid'>$department</option>";
-}
-
-echo '</select>';
-echo'<br>';
-echo'<br>';?>
-
-Sex
-<select type="dropdown"  name="sex"id="sex"> 
-  <option selected >..select..</option>
-  <option >Male</option>
-  <option>Femal</option>
-</select>
-<br><br>
-
-Year&nbsp;
-<select type="dropdown"  name="year"id="year">
-  <option selected>..select..</option>
-  <option> I</option>
-  <option>II</option>
-  <option>III</option>
-</select>
-<br><br>
-Semister
-<select type="dropdown"  name="Semister"id="sem">
-<option selected >..select..</option>
-  <option>I</option>
-  <option>II</option>
-</select>
-<br>
-  </span>  </span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="register" name="register">&nbsp;&nbsp;&nbsp;&nbsp;
-<input type="reset" value="Cancel" name="cancel"><br>
-
-<?php
-
-	
-if(isset($_POST['register']))
-{
-
-$firstname=$_POST['fname'];
-$middlename=$_POST['mname'];
-$lastname=$_POST['lname'];
-$studentid=$_POST['id'];
-$age=$_POST['age'];
-$sex=$_POST['sex'];
-$department=$_POST['department'];
-$year=$_POST['year'];
-$Semister=$_POST['Semister'];
-$password1=$studentid;
-$password=($password1);
-
-
-//$reg=mysqli_query($conn,"insert into student values('$studentid','$firstname','$lastname','$age','$sex','$department','$year','$Semister','$firstname')");
-$reg=mysqli_query($conn,"insert into student values('$studentid','$firstname','$middlename','$lastname','$age','$sex','$department','$year','$Semister')");
-
-if($reg){
-	$re=mysqli_query($conn,"insert into account  values('','','$studentid','$firstname','$password','student')");
-echo "registered successfully!!";
- echo'<meta content="3;registerstudent.php" http-equiv="refresh"/>';
-}
-			else
-			{
-			echo"Student is not registered please try again!!";
-			 echo'<meta content="3;registerstudent.php" http-equiv="refresh"/>';
-			}}
-mysqli_close($conn);
-
-?>
-
+<form action="importstudent.php" method="post" name="register" onSubmit="return check()">
+<fieldset><legend align="center"><span class="w"><span class="w"> Import student Data</span></span></legend>
+   <form action="departments/import/importData.php" method="post" enctype="multipart/form-data" id="importFrm">
+                Select Table
+			<select name="table">
+                <option value="test">Select table</option>
+				<option value="student">Student</option>	
+				<!--option value="tbl_users">Users</option-->
+			</select><br>
+				<input type="file" name="file" />
+                <input type="submit" class="btn btn-primary" name="importSubmit" value="IMPORT">
 </fieldset>
 </form>
+<?php
+if(isset($_POST['importSubmit'])){
+    $table = $_POST['table'];
+    // Allowed mime types
+    $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
+    
+    // Validate whether selected file is a CSV file
+    if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)){
+        if(is_uploaded_file($_FILES['file']['tmp_name'])){
+            
+            //open uploaded csv file with read only mode
+            $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
+            
+            //skip first line
+            fgetcsv($csvFile);
+            
+            //parse data from csv file line by line
+            while(($line = fgetcsv($csvFile)) !== FALSE){
+				if($table == 'student'){
+						//check whether member already exists in database with same id number
+					$prevQuery = "SELECT studentid FROM ".$table." WHERE studentid = '".$line[0]."'";
+					$prevResult = mysqli_query($conn,$prevQuery);
+					$count = mysqli_num_rows($prevResult);
+                if($count > 0){
+                	 echo"Student is already registered please try again!!";
+			 echo'<meta content="3;importstudent.php" http-equiv="refresh"/>';
+                }else{
+                    //insert member data into database
+                   mysqli_query($conn,"INSERT INTO ".$table." (`studentid`,`firstname`,`middlename`,`lastname`,`age`, `sex`, `departmentid`,`year`,`semister`) VALUES ('".$line[0]."','".$line[1]."','".$line[2]."','".$line[3]."','".$line[4]."','".$line[5]."','".$line[6]."','".$line[7]."','".$line[8]."')");
+					
+					mysqli_query($conn,"INSERT INTO account (instructorid, studentid, username, password, usertype) VALUES ('','".trim($line[0])."','".trim($line[1])."','".trim($line[0])."','student')");
+				}
+            }
+            }
+            //close opened csv file
+            fclose($csvFile);
 
-
+            echo"Student is registered!!";
+	    echo'<meta content="3;importstudent.php" http-equiv="refresh"/>';
+        }else{
+             echo"Student is not registered please try again!!";
+	     echo'<meta content="3;importstudent.php" http-equiv="refresh"/>';
+        }
+    }else{
+         echo"Invalid CSV file please try again!!";
+	 echo'<meta content="3;importstudent.php" http-equiv="refresh"/>';
+    }
+}
+?>
 
 </td>
 
